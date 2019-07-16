@@ -25,23 +25,20 @@ function createID() {
     return Math.floor(Math.random()*20)*1000;
 }
 
-function DBConnect(payload) {
+DBConnect = (payload) => {
     // send our data to connect.js file
 
     // 1- create an ajax request
     $.ajax({
-       type: "put",
-        uri: "/student/register",
-        contentType: "application/json",
-        dataType: "json",
+        type: 'POST',
+        url: '/connect',
         data: JSON.stringify(payload),
-        success: function (response) {
-            console.log(response);
+        success: function success(response){
+                console.log(response);
         },
-        error: function (error) {
-            console.log(error);
+        error: function error(){
+            console.log('Error Occurred!');
         }
-
     });
 
-}
+};
