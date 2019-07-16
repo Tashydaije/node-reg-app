@@ -1,11 +1,23 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Tasha</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>NodeJS CRUD App</h1>
-    <p>Welcome to Tasha</p>
-  </body>
-</html>
+<% include partials/includesHeader.ejs%>
+
+  <form class="submitForm" method="post">
+    <div class="container">
+      <h1><%=title%></h1>
+      <p><%=subtitle%></p>
+
+      <hr>
+
+      <label for="fname"><b>First Name</b></label>
+      <input type="text" placeholder="Enter your first name" name="fname" id="fname" required>
+
+      <label for="lname"><b>Last Name</b></label>
+      <input type="text" placeholder="Enter your last name" name="lname" id="lname" required>
+
+      <hr>
+
+      <button type="submit" class="registerbtn">Save</button>
+    </div>
+
+  </form>
+
+  <% include partials/includesFooter.ejs%>
