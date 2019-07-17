@@ -33,7 +33,7 @@ DBConnect = (payload) => {
         type: 'POST',
         url: '/connect',
         data: JSON.stringify(payload),
-        success: function success(response){
+        success: function (response){
                 console.log(response);
         },
         error: function error(){
