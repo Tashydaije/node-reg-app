@@ -17,24 +17,30 @@ $('.submitForm').submit(function (e) {
         // send to DB function
         DBConnect(payload);
 
-
 });
 
+// TO READ !!
+// -> Read on JavaScript ES6
+// Below is what we call :: Arrow Functions...
+    // function abc(){}
+    // abc = () => {}
+
 // create student id
-function createID() {
+createID = () => {
     return Math.floor(Math.random()*20)*1000;
-}
+};
 
 DBConnect = (payload) => {
     // send our data to connect.js file
-
+    console.log(JSON.stringify(payload));
     // 1- create an ajax request
     $.ajax({
         type: 'POST',
         url: '/connect',
-        data: JSON.stringify(payload),
+        data: payload,
         success: function (response){
                 console.log(response);
+            $('#responseCreate').text(response);
         },
         error: function error(){
             console.log('Error Occurred!');

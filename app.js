@@ -1,16 +1,17 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var connectionDB = require('./routes/connect');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const connectionDB = require('./routes/connect');
 
-var app = express();
-connectionDB(app);
+const app = express();
+/*connectionDB(app);*/
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -44,7 +45,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-var port = process.env.port || 5000;
+let port = process.env.port || 5000;
 app.listen(port, function(){
   console.log('go to port 5000');
 });
